@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.XieYiqiang.model.User" %><%--
   Created by IntelliJ IDEA.
   User: admin
   Date: 2023/4/2
@@ -12,36 +12,39 @@
     <title>User info</title>
 </head>
 <body>
+<%
+    User u=(User)request.getAttribute("user");
+%>
 <h1>User info</h1>
 <table>
     <tr>
         <td>id:</td>
-        <td><%=request.getAttribute("id")%>
+        <td><%=u.getId()%>
         </td>
     </tr>
     <tr>
         <td>username</td>
-        <td><%=request.getAttribute("username")%>
+        <td><%=u.getUsername()%>
         </td>
     </tr>
     <tr>
         <td>passwords</td>
-        <td><%=request.getAttribute("passwords")%>
+        <td><%=u.getPassword()%>
         </td>
     </tr>
     <tr>
         <td>email</td>
-        <td><%=request.getAttribute("email")%>
+        <td><%=u.getEmail()%>
         </td>
     </tr>
     <tr>
         <td>gender</td>
-        <td><%=request.getAttribute("gender")%>
+        <td><%=u.getGender()%>
         </td>
     </tr>
     <tr>
         <td>birthdate</td>
-        <td><%=request.getAttribute("birthdate")%>
+        <td><%=u.getBirthdate()%>
         </td>
     </tr>
 </table>

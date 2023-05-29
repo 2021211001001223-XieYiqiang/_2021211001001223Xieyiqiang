@@ -1,25 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: Lenovo
+  Date: 5/15/2021
+  Time: 11:30 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>login</title>
+    <title>Login</title>
 </head>
 <body>
-<%@include file="header.jsp"%>
-<h1>Login</h1>
-<%
-   if(!(request.getAttribute("message")==null))
-   {
-       out.println(request.getAttribute("message"));
-   }
-%>
-  <form action="login" method="post">
-     userName:<input type="text" name="username"><br/>
-     password:<input type="password" name="password"> <br/>
-     <input type="submit" value="Login">
-  </form>
-<%@include file="footer.jsp"%>
+<%-- todo 6: use c:out to print message fron request --%>
+<c:out value="${message}"/>
+<%--todo 1: use c:url to set url in action="validate.jsp" --%>
+<form action="<c:url value="validate.jsp"/>">
+    Username : <input type="text" name="username"><br>
+    Password : <input type="password" name="password"><br>
+    <input type="submit" value="Login"/>
+</form>
 </body>
 </html>
