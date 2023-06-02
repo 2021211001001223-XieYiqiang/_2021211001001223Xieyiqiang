@@ -24,10 +24,31 @@
    <c:choose>
          <c:when test="${param.username=='admin' && param.password=='123'}">
              <c:set var="username" value="${param.username}" scope="session"/>
+<%--             实验1--%>
+<%--             <%--%>
+<%--                 HttpSession session1=request.getSession();--%>
+<%--             %>--%>
+
+             实验二
+             <%
+                 String remember=request.getParameter("rememberMe");
+                 if(remember!=null&&remember.equals("1")){
+                      Cookie c1=new Cookie("cUsername",request.getParameter("username"));
+                     Cookie c2=new Cookie("cPassword",request.getParameter("password"));
+                     Cookie c3=new Cookie("cRememberMe",request.getParameter("rememberMe"));
+                     c1.setMaxAge(5);
+                     c2.setMaxAge(5);
+                     c3.setMaxAge(5);
+                     response.addCookie(c1);
+                     response.addCookie(c2);
+                     response.addCookie(c3);
+
+                 }
+             %>
              <c:url var="url" value="welcome.jsp">
                  <c:param name="username" value="admin"/>
-                 <c:param name="password" value="123"/>
              </c:url>
+
              <c:redirect url="${url}"/>
          </c:when>
        <c:otherwise>
